@@ -1,0 +1,97 @@
+//Exercise 1
+1. Create a decorator decoratorFunction(f, n) that delays each call
+    of f by n milliseconds.
+    Note: your solution should pass all arguments and the context this.
+    For instance:
+    function f(a, b) {
+    alert( a + b );
+    }
+    let f1 = decoratorFunction(f, 1000);
+    let f2 = decoratorFunction(f, 2000);
+    f1(‘a’, ‘b’); should show ‘ab’ after 1000 milliseconds.
+    f2(‘a’, ‘b’); should show ‘ab’ after 2000 milliseconds.
+    Note: don’t use arrow function.
+    
+    function f(a,b){
+        alert(a+b);
+    }
+
+
+    function decoratorF(f,n){
+
+        return function(...args){
+            let call=this;
+            setTimeout(function(){
+                         f.apply(call,args);
+                        },n);
+        };
+    }
+
+    f=decoratorF(f,3000);
+    f(5,9);
+  
+  
+//Exercise 2
+2. Create a decorator decoratorFunction(f, n) that delays each call
+    of f by n milliseconds.
+    Note: your solution should pass all arguments and the context this.
+    For instance:
+    function f(a, b) {
+    alert( a + b );
+    }
+    let f1 = decoratorFunction(f, 1000);
+    let f2 = decoratorFunction(f, 2000);
+    f1(‘a’, ‘b’); should show ‘ab’ after 1000 milliseconds.
+    f2(‘a’, ‘b’); should show ‘ab’ after 2000 milliseconds.
+    Note: use at least 1 arrow function.
+    
+    function f(a,b){
+        alert(a+b);
+    }
+    
+    function decoratorFunction(f,n){
+    
+          return function(){
+              setTimeout(()=>f.apply(this,arguments),n);
+          };
+    }
+
+    f=decoratorFunction(f,3000);
+    f(7,2);
+    
+    
+    
+ //Exercise 3
+ 3. You have an array of user objects, each one has name, surname and id. Write the
+    function to create another array from it, of objects with id and fullName, where
+    fullName is generated from name and surname.
+    For instance:
+    let john = { name: &quot;John&quot;, surname: &quot;Smith&quot;, id: 1 };
+    let mary = { name: &quot;Mary&quot;, surname: &quot;Key&quot;, id: 2 };
+    let users = [ john, mary ];
+    New users array should be:
+    newUsers = [ { fullName: &quot;John Smith&quot;, id: 1 }, { fullName: &quot;Mary Key&quot;, id: 2 }, ]
+    (Hint: use Array.map).
+    
+    let john = { name: 'John', surname: 'Smith',id: 1 };
+    let mary = { name: 'Mary', surname: 'Key',id: 2 };
+    let liana={ name: 'Liana', surname: 'Poghosyan',id: 3};
+    let users = [ john, mary , liana];
+
+    function fullName(arr){
+        return res=arr.map(item=>{let obj={};
+                                obj.fullName=item.name+' '+item.surname;
+                                obj.id=item.id;
+                                return obj;
+        });
+
+    }
+
+
+    console.log(fullName(users));
+    
+    
+    
+    
+    
+    
